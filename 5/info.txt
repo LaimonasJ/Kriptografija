@@ -1,0 +1,78 @@
+1. XOR pirmiems 16 rakto bitu
+   po pirmu 8, zinomas registras
+   k9 = c1*k1+...+c8*k8
+   k10 = c2*k2+...
+   
+   isprendziam lygti ir gaunam konstantas. Lygtis
+   
+   k1 k2 k3 ... | 
+   
+   
+['10001010', '11111100']
+
+10001010|1
+00010101|1
+00101011|1
+01010111|1
+10101111|1
+01011111|1
+10111111|0
+01111110|0
+
+
+10001010|1
+00010101|1
+00101011|1
+01010111|1
+10101111|1
+01011111|1
+10111111|0
+01111110|0
+
+c = 10010101
+
+
+
+# The system of linear feedback registers
+
+def stream(c,xp,n):  # the keystream generation, c-coefficients, xp - initial state, n - number of bits
+    x=[0,0,0,0,0,0,0,0]
+    for i in range(0,8):
+        x[i]=xp[i]
+    sr=''
+    for i in range(0,n):
+        bt=0
+        sr+=str(x[0])
+        for j in range(0,8):
+            bt+=c[j]*x[j]
+        for j in range(1,8):
+            x[8-j]=x[7-j]
+        x[0]=bt%2
+    return sr
+
+#stream cipher
+def str_cipher(t,c,xp): # t - plaintext (ASCII decimal list), c-coefficients, xp - initial state
+    cp=[]
+    k=len(t)
+    sr=stream(c,xp,8*k)
+    for i in range (0,k):
+        cp.append(t[i]^^int(sr[8*i:8*i+8],2))
+    return cp
+# How to use 
+c=[1,0,0,1,0,1,0,1]
+t=[10,123]
+xp=[0,1,0,1,0,0,0,1]
+cp=str_cipher(t,c,xp)
+print cp
+print str_cipher(cp,c,xp)
+
+print [ord('T')^^222, ord('U')^^169]
+print ['{0:08b}'.format(ord('T')^^222), '{0:08b}'.format(ord('U')^^169)]
+
+
+
+sifras = [169, 170, 97, 22, 146, 109, 24, 126, 232, 136, 174, 1, 49, 65, 156, 34, 213, 168, 56, 37, 200, 62, 118, 243, 120, 39, 145, 242, 170, 32, 216, 84, 170, 185, 2, 209, 197, 23, 237, 46, 6, 217, 189, 210, 191, 93, 225, 131, 94, 135, 169, 134, 106, 155, 53, 59, 62, 172, 252, 39, 142, 138, 111, 127, 178, 171, 228, 67, 81, 198, 7, 139, 251, 76, 189, 64, 139, 88, 20, 252, 69, 208, 129, 211, 32, 228, 164, 161, 139, 130, 1, 187, 248, 213, 7, 28, 181, 148, 24, 90, 116, 65]
+
+tekstas = str_cipher(sifras, c, xp)
+
+print ''.join(chr(i) for i in tekstas)
