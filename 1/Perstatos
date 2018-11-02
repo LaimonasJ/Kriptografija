@@ -1,0 +1,45 @@
+def arrayToIndexArray(array):
+    poz = []
+    for i in range(0,len(array)):
+        c = 0
+        for j in range(0, len(array)):
+            if array[i] > array[j] or (array[i] == array[j] and i > j):
+                c += 1
+        poz.append(c)
+    return poz 
+
+def decodePerstatos(sifras, raktas):  #nebaigtas
+    poz = arrayToIndexArray(raktas)
+    n = len(sifras)/len(raktas)
+    liko = len(sifras)%len(raktas)
+    columns = []
+    for i in poz:
+        columns.append(unicode("", 'utf-8'))
+    
+    i = 0
+    for a in poz:
+        charsToGet = n 
+        if a < liko:
+            charsToGet += 1
+        columns[a] = sifras[i:i+charsToGet]
+        i += charsToGet
+    
+    ats = ("", 'utf-8')
+    kiek = 0;
+    for i in range(0, len(sifras)):
+        ats += columns[i%len(raktas)][i/len(raktas)]
+
+    return ats
+    
+
+sifras = unicode("""EUENI SEJIO ODLŽO AJRAP VIOKU 
+VDAGN KĖITŠ AVNST SOBUY JTDIJ 
+IPĄĮU TISDN SOVIL OSSRS EIIIĮ 
+IRDĘI DRORS KRAIŽ""", 'utf-8')
+
+sifras = sifras.replace(' ', '')
+sifras = sifras.replace('\n', '')
+sifras = sifras.replace('\t', '')
+
+decodePerstatos(sifras, "laukas")
+
