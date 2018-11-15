@@ -1,0 +1,57 @@
+# w = [w1, w2, ... w8]
+# w1 = 1573 <-> v1 = 335807
+# v=[v1,...,v8]
+# v1*S == w1(mod p), -> s=?
+# 1) gcd(v1, p) = d =1
+#    s == w1v1^-1(mod p)   sage: s = w1/v1%p
+
+# 2) (v1/d)S = w1/d (mod p)
+# S0 = w1/v1%(p/d)
+# S1 = S0 + p/d, S2 = S0 + 2* p/d, .... , Sn = S0 + (n-1) p/d
+#
+#v1*s == w1 (mod p)
+# w = [w1, w2, ... w8]
+
+# Decryption
+# C = [c1, c2, ..]
+# Ci*S == Cr(mod p)
+#
+
+V = [348565, 401980, 47819, 472351, 157587, 45328, 408292, 310614] #Viesas raktas
+C = [1375770, 850004, 659026, 1274536, 1676516, 850004, 659026, 802185, 1361752, 45328, 1013187, 802185, 501439, 1274536, 1375770, 1432123, 1361752]
+w0 = 1559  #Privataus rakto dalis
+p = 548134 #modulis
+
+d = gcd(V[0], p) #Jei d = 1 tai puiku
+
+print (d)
+
+s = w0/V[0]%(p/d)
+# s = s + (p/d) -> S0 geras, nes su S1, susigadina seka (ne dideja)
+print (s)
+
+W = [v*s%p for v in V]
+
+print (W) 
+
+Cx = [c*s%p for c in C]
+    
+print (Cx)
+
+
+
+rez = ""
+for x in range(len(Cx)):
+    temp = Cx[x]
+    str = ""
+    for i in range(len(W)):
+        i += 1
+        if(temp >= W[len(W) - i]):
+            str += "1"
+            temp = temp - W[len(W) - i]
+            
+        else:
+            str += "0"
+    rez += (chr(int(str, 2)))
+
+print (rez)
