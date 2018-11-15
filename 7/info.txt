@@ -1,4 +1,5 @@
-#2 baitai XOR h0 -> e() XOR 2 baitai -> e() 
+#  -*- coding: utf-8 -*-
+#2 baitai XOR h0 -> e() XOR 2 baitai -> e()
 
 getBin = lambda x, n: x >= 0 and str(bin(x))[2:].zfill(n) or "-" + str(bin(x))[3:].zfill(n)
 abc_h='ABCDEFGHIJKLMNOP' # h-funcijos reikšmių abėcėlė
@@ -33,9 +34,32 @@ def hf(h0,r,s): # h-funkcija
         h=e(m,k)
     return code(h)
 
-h0='vi'
+h0='vilk'
 r='va'
-s='vilkasvarpas'
-s1='laijurxxvarpas'  #rasti xx
-h=hf(h0,r,s), h(h0, r, s1) 
-h, decod(h)
+s1='vilk'
+s2='laijur'
+
+y = hf(h0,r,s1)
+biny = decod(y)
+
+a1 = int(biny[0:8],2) ^^ ord('a')
+a2 = int(biny[8:16],2) ^^ ord('s')
+
+c = hf(h0,r,s2)
+binc = decod(c)
+x1 = int(binc[0:8],2) ^^ a1
+x2 = int(binc[8:16],2) ^^ a2
+
+#patikrinimas
+s3 = 'laijur' + chr(x1) + chr(x2) + 'varpas'
+s4 = 'vilkasvarpas'
+print(hf(h0,r,s3))
+print(hf(h0,r,s4))
+
+print(x1,x2)
+
+#ats
+# h0='pikt'
+# r='va'
+# M = 'piktasvanduo'
+# M* = 'ignjat' + '139' + '2' + 'vanduo'
