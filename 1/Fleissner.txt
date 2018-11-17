@@ -15,14 +15,12 @@ def decodeFleissner(cipher, key):
     key = sorted(key)
     text = unicode("", 'utf-8')
     for c in cip:
-        te = ['X']*len(key)^2
-        for i in range (0, 4):
-            sub = c[i*len(key):i*len(key)+len(key)]
-            for j in range(0, len(key)):
-                te[key[j]] = sub[j]
-            key = sorted(rotate(key))
-        for t in te:
-            text += t
+        for i in range (0, len(c)):
+            text += c[key[i%len(key)]]
+            if i == 5:
+                print c[key[0]]
+            if i%len(key) == 3:
+                key = sorted(rotate(key))     
     return text
 
 def rotate(key):
@@ -45,7 +43,7 @@ MŪKTRIŠOLSŪŽOŲTĮ
 IOMVEŽAIEKBERŠSK
 TAĘTJUOPIDKASAIO
 ITSDĖJIOAVBUDAUA""", 'utf-8')
-
+#cipher = unicode("KLSABAVAATARAUSK", 'utf-8')
 
 possibleKeys = getPossibleKeys(keyPart, size)
 for k in possibleKeys:
