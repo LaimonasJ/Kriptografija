@@ -17,8 +17,6 @@ def decodeFleissner(cipher, key):
     for c in cip:
         for i in range (0, len(c)):
             text += c[key[i%len(key)]]
-            if i == 5:
-                print c[key[0]]
             if i%len(key) == 3:
                 key = sorted(rotate(key))     
     return text
