@@ -18,6 +18,8 @@ TLGSS GZOIA IĮTĘG KYKTĘ JIRVH
 ŪBSSF ĮČVCS DLŪIĘ KDFĘA GVMĖĮ 
 OĮTDĮ GSAHJ ERVCF UHB   """, 'utf-8').replace('\n', '').replace(' ', '')
 abc=unicode('AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ','utf-8')
+n=len(abc)
+
 print sifras
 print abc
 
@@ -31,9 +33,6 @@ def freq(text):
         s+=w
     return s
 
-t='TRRyyyIIU'
-print(freq(t))
-
 def friedm(text,k):
     textn=unicode("",'utf-8')
     for r in text:
@@ -45,10 +44,9 @@ def friedm(text,k):
         if textn[i]==textn[i-k] :
             s+=1
     return  1.*s/(l-k)  
-t=unicode('PIGĄU KCLĘR ŽSOPĘ CKCIŲ ĖGACY ','utf-8')
-print(friedm(t,2))
 
-n=len(abc)
+
+
 def guess(test, k, sifr): #test - dažniausių raidžių eilutė, k - spėjamas šifro raktas
     tst=unicode('','utf-8')
     for r in test:
@@ -66,14 +64,11 @@ def guess(test, k, sifr): #test - dažniausių raidžių eilutė, k - spėjamas 
     kiek=len(sifrn)
     s=0
     for a in d.keys(): s+=d[a]
-    return s/kiek
-test=unicode('ABC','utf-8')
-sifr=unicode('ABABABASSDDHHDKKKCCCCCLKLDKSJJSJSJLL','utf-8')
-print guess(test,2,sifr)
+    return float(s/kiek)
 
 
 
-n=len(abc)
+
 def prepare(text): #remove non-ascii
     textn=unicode("", 'utf-8')
     for a in text:
@@ -89,8 +84,7 @@ def split(text,d):
     for i in range(0,n):
         tspl[i%d]+=textn[i]
     return tspl    
-f=split(unicode('ABABABABABABČ', 'utf-8'),2)
-print f[0],f[1]
+
 
 def freq(text):
     d = defaultdict(int)
@@ -102,5 +96,36 @@ def freq(text):
         s+=w
     return s
 
-t='TRRyyyIIU'
-print(freq(t))
+def Vigenere(text,key): #Vigenere cipher
+    textn=prepare(text)
+    keyn=prepare(key)
+    textc=u""
+    keys=[]
+    lk=len(keyn)
+    for i in range(0,lk):
+        keys.append(abc.index(keyn[i]))
+    lt=len(textn)
+    for i in range(0,lt):
+        textc+=abc[(abc.index(textn[i])-keys[i%lk])%n]
+    return textc
+    
+dazn = "IASORET"   #dazniausios lietuviu kalbos raides 
+
+#ieskom rakto ilgio.
+#tikrinam, kas kiek daugiausia pasikartojimu.
+#su didziausia reiksme indeksas - rakto ilgis
+for i in range(1,11):
+    print friedm(sifras,i), i
+    
+    
+#padalinam teksta i tiek eiliu, kokio ilgio raktas
+sif = split(sifras, 6)
+
+#kiekvienam raktui tikrinam visas raides. Geriausia rakto raide yra ta, kur didziausias guess (turetu buti arti 0.5, nes IASORET sudaro ~50% raidziu)
+#tiketina pirmam stulpelyje rasti rakta
+for s in sif:
+    spejimai = sorted([(guess(dazn,i,s), abc[i]) for i in range(0, len(abc))], key=lambda tup: tup[0], reverse=True)[:5]
+    print spejimai
+
+#tikrinam teksta
+print Vigenere(sifras, 'STORAS')
