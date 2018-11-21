@@ -1,22 +1,17 @@
 from collections import defaultdict
 
-sifras = unicode("""KTŠBA LEŽAŠ IHĖĮZ RIĖSD ČZJČI 
-JAĖIK DRAKO ĮĄTĘB ZFLIU ĘYĄCI 
-OFTĘH FAKGC ĄTĘJI JĘNČG MIĖŽČ 
-ĮUSKK UBTKS JBJUF ODUFA ĖCCAH 
-AYCŲO BSŽKD ĘGDDŪ ŠAGIJ SNZKS 
-CSKČČ SKSGP ĮTVĖŽ LRDCG ZOĖIE 
-ŠYGBE JTDĖĘ OĄCIU ŽOĮFT SBJSĘ 
-NGBAI ĄTYŠĖ OCKPH LSGŽĮ SDĮVŲ 
-YJIGC NHĘUH ĘKĘBU OCŽĮG MCYFU 
-ĘIMFĘ DBŲĄC GYĖOK SDOĮT ĮHIĖĖ 
-ACCJV BZCĘT AJVCĮ MAFOE HCĮRI 
-KLJAF TCTPĮ BIKCI ĖIGSG DMKOK 
-SKĮIU ĘKPGR GSĖDE RSŪSD ČJAYY 
-TLGSS GZOIA IĮTĘG KYKTĘ JIRVH 
-ŪĮOĮĄ TĘBZF LKCŪI ĄLĖOK JCYNZ 
-ŪBSSF ĮČVCS DLŪIĘ KDFĘA GVMĖĮ 
-OĮTDĮ GSAHJ ERVCF UHB   """, 'utf-8').replace('\n', '').replace(' ', '')
+sifras = unicode("""FTĘJI GĄMUŲ ĖEHFO JBNKO ĘKPĮH 
+LOŲTL ĮĄĮRK HĘEZR NĘĖUN RNHFT 
+YVIOV JHGLL YYAKŠ KLFOŪ SŪĮĮN 
+CIIVD DRUĘS KŠRAG VMAUO KSVAG 
+UGCŽČ ZKCKĮ OBNVK NGMJS LHOVO 
+TNKUV ATLRĖ JAĮGŽ ĮZKCS FOJIF 
+ŲDOČI VJFĖC IYIDĘ JUĖCO HĘACŪ 
+ĘĮZJH SJČZP SGTIG UYSMH RSŽŪT 
+YGNKF ŽĮGLC GĄHUĖ ŪLMŪĄ VCŪNG 
+ŠTLJV AZSVĮ ZLMSS KĮČRA CGNĖĘ 
+IYMZO RKKMI ĖAĖES NFGBN KDFGT 
+YODUV AY   """, 'utf-8').replace('\n', '').replace(' ', '')
 abc=unicode('AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ','utf-8')
 n=len(abc)
 
@@ -128,4 +123,4 @@ for s in sif:
     print spejimai
 
 #tikrinam teksta
-print Vigenere(sifras, 'STORAS')
+print Vigenere(sifras, 'STOGAS')
