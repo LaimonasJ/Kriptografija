@@ -1,1 +1,37 @@
+abc=unicode('AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ','utf-8')
+n=len(abc)
 
+def prepare(text): #remove non-ascii
+    textn=unicode("", 'utf-8')
+    for a in text:
+        if a in abc:
+            textn+=a
+    return textn.upper()
+
+def decryptAutoVigenere(text,key): #Vigenere cipher
+    textn=prepare(text)
+    keyn=prepare(key)
+    textc=u""
+    for i in range (0, len(text)):
+        if i < len(keyn):
+            textc+=abc[(abc.index(textn[i])-abc.index(keyn[i]))%n]
+        else:
+            textc+=abc[abc.index(textn[i])-abc.index(textn[i-len(keyn)])%n]
+    return textc
+
+sifras = unicode("""EMŪĘI KAFĄĮ ČŪMBY ŽGPĮT BKRPC 
+DTPRS CŲĖPK VUŲŲY ŪOSĘM FOAHV 
+MŠĖNŽ RAYOE ĘJOVJ HJĄUO ŲŽMĘĮ 
+ĮLDĖŲ MPĖZY VZĖĖL MFŽĄY ČSJMČ 
+UNŠŲG PUŽĖF CĄLŽD VDĘAN PFAĘB 
+TČVNN VIGMN GRAĘZ ĘĄARĘ ŲNUAT 
+NGĘLO JPRAM CJJŠU JSČJĖ SŲIHE 
+ŠSYLH SMGOĖ ŲSCCŲ BUKSN ĘŪLĘK 
+TFČAN BĮŽGZ ĮNEŽC ŠČPAŪ SGIŽI 
+JSŪIR EIVMC JMZLB UAEJL ČOIŽJ 
+VOOŠJ FNAUG EĖDOĮ MŠŽZO TFĖŽG 
+ŠDFDH ŪISFV SJAFA ĮLDIV MTĖOŠ 
+CDTBT IMTKY   """, 'utf-8').replace('\n', '').replace(' ', '')
+raktas = unicode('LIESAS', 'utf-8')
+
+print decryptAutoVigenere(sifras, raktas)
