@@ -91,7 +91,7 @@ def freq(text):
         s+=w
     return s
 
-def Vigenere(text,key): #Vigenere cipher
+def VigenereDecrypt(text,key): #Vigenere cipher
     textn=prepare(text)
     keyn=prepare(key)
     textc=u""
@@ -123,4 +123,4 @@ for s in sif:
     print spejimai
 
 #tikrinam teksta
-print Vigenere(sifras, 'STOGAS')
+print VigenereDecrypt(sifras, 'STOGAS')
