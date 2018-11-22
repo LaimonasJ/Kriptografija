@@ -1,3 +1,4 @@
+43 užduotis
 sifras 1
 Daznio testas
 T1 = 3.07558139535
