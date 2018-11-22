@@ -1,57 +1,41 @@
 43 užduotis
 sifras 1
-Daznio testas
-T1 = 3.07558139535
-p  = 0.0794761724045
-Seka nera atsitiktine
-Bitu poru testas
-T2 = 3.15877086084
-p  = 0.206101723141
-Seka atsitiktine
-Autokoreliacijos testas
-Seka atsitiktine su d = 5.0, T5 = -0.267847556128, p  = 0.605591668413
-Seka atsitiktine su d = 10.0, T5 = -1.15214305896, p  = 0.875368854202
-Seka atsitiktine su d = 15.0, T5 = -0.0385471672246, p  = 0.5153742873
+Daznis
+Neatsitiktine, T1=3.08, p=0.08
+Bitu poros
+Neatsitiktine, T1=3.16, p=0.21
+Autokoreliacija
+Atsitiktine, d=5.00, T5=-0.27, p=0.61
+Atsitiktine, d=10.00, T5=-1.15, p=0.88
+Atsitiktine, d=15.00, T5=-0.04, p=0.52
 
 sifras 2
-Daznio testas
-T1 = 0.28488372093
-p  = 0.59351797344
-Seka atsitiktine
-Bitu poru testas
-T2 = 0.627780034528
-p  = 0.730599377059
-Seka atsitiktine
-Autokoreliacijos testas
-Seka atsitiktine su d = 5.0, T5 = 0.191319682948, p  = 0.424137570574
-Seka atsitiktine su d = 10.0, T5 = 0.384047686321, p  = 0.350471551971
-Seka atsitiktine su d = 15.0, T5 = -1.50333952176, p  = 0.933624243241
+Daznis
+Atsitiktine, T1=0.28, p=0.59
+Bitu poros
+Neatsitiktine, T1=0.63, p=0.73
+Autokoreliacija
+Atsitiktine, d=5.00, T5=0.19, p=0.42
+Atsitiktine, d=10.00, T5=0.38, p=0.35
+Atsitiktine, d=15.00, T5=-1.50, p=0.93
 
 sifras 3
-Daznio testas
-T1 = 3.07558139535
-p  = 0.0794761724045
-Seka nera atsitiktine
-Bitu poru testas
-T2 = 3.15877086084
-p  = 0.206101723141
-Seka atsitiktine
-Autokoreliacijos testas
-Seka atsitiktine su d = 5.0, T5 = -0.267847556128, p  = 0.605591668413
-Seka atsitiktine su d = 10.0, T5 = -1.15214305896, p  = 0.875368854202
-Seka atsitiktine su d = 15.0, T5 = -0.0385471672246, p  = 0.5153742873
+Daznis
+Neatsitiktine, T1=3.08, p=0.08
+Bitu poros
+Neatsitiktine, T1=3.16, p=0.21
+Autokoreliacija
+Atsitiktine, d=5.00, T5=-0.27, p=0.61
+Atsitiktine, d=10.00, T5=-1.15, p=0.88
+Atsitiktine, d=15.00, T5=-0.04, p=0.52
 
 tekstas
 KAIPMEDZIUOSEIRZOLESEPAUKSTELIAISLAPSTESINARDEVAIKUSPEREJOSAVOGIESMELESGIEDOJOCIULBEJO
-Daznio testas
-T1 = 21.6337209302
-p  = 3.2999884878e-06
-Seka nera atsitiktine
-Bitu poru testas
-T2 = 102.085347483
-p  = 0.0
-Seka nera atsitiktine
-Autokoreliacijos testas
-Seka nera atsitiktine su d = 5.0, T5 = 2.02798863925, p  = 0.0212807037543
-Seka atsitiktine su d = 10.0, T5 = -5.68390575756, p  = 0.999999993417
-Seka nera atsitiktine su d = 15.0, T5 = 6.66865992985, p  = 1.29074528843e-11
+Daznis
+Neatsitiktine, T1=21.63, p=0.00
+Bitu poros
+Neatsitiktine, T1=102.09, p=0.00
+Autokoreliacija
+Neatsitiktine, d=5.00, T5=2.03, p=0.02
+Atsitiktine, d=10.00, T5=-5.68, p=1.00
+Neatsitiktine, d=15.00, T5=6.67, p=0.00
