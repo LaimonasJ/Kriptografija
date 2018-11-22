@@ -1,4 +1,3 @@
-
 #http://www.mif.vu.lt/katedros/matinf/asm/vs/pask/crypto_prot/crppr.htm
 
 #6 uzduotis
@@ -87,34 +86,33 @@ def runTests(intArray, p):
     ft = frequencyTest(b)
     pf = getChiSquared(1, ft)
     
-    print "Daznio testas"
-    print ("T1 = " + str(float(ft)))
-    print ("p  = " + str(float(pf)))
+    
+    "{0:.2f}".format(float(ft))
+    
+    print "Daznis"
     if pf < p:
-        print ("Seka nera atsitiktine")
+        print ("Neatsitiktine, T1=" + "{0:.2f}".format(float(ft)) + ", p=" + "{0:.2f}".format(float(pf)))
     else:
-        print ("Seka atsitiktine")
+        print ("Atsitiktine, T1=" + "{0:.2f}".format(float(ft)) + ", p=" + "{0:.2f}".format(float(pf)))
     
     pt = bitPairTest(b)
     pp = getChiSquared(2, pt)
     
-    print "Bitu poru testas"
-    print ("T2 = " + str(float(pt)))
-    print ("p  = " + str(float(pp)))
+    print "Bitu poros"
     if pp < p:
-        print ("Seka nera atsitiktine")
+        print ("Neatsitiktine, T1=" + "{0:.2f}".format(float(pt)) + ", p=" + "{0:.2f}".format(float(pp)))
     else:
-        print ("Seka atsitiktine")
+        print ("Neatsitiktine, T1=" + "{0:.2f}".format(float(pt)) + ", p=" + "{0:.2f}".format(float(pp)))
     
     
-    print "Autokoreliacijos testas"
+    print "Autokoreliacija"
     for d in range(5, 20, 5):
         at = autocorrelationTest(b, d)
         pa = getNormalDistribution(at)
         if pa < p:
-            print ("Seka nera atsitiktine su d = " + str(float(d)) + ", T5 = " + str(float(at)) + ", p  = " + str(float(pa)))
+            print ("Neatsitiktine, d=" + "{0:.2f}".format(float(d)) + ", T5=" + "{0:.2f}".format(float(at)) + ", p=" + "{0:.2f}".format(float(pa)))
         else:
-            print ("Seka atsitiktine su d = " + str(float(d))  + ", T5 = " + str(float(at)) + ", p  = " + str(float(pa)))
+            print ("Atsitiktine, d=" + "{0:.2f}".format(float(d))  + ", T5=" + "{0:.2f}".format(float(at)) + ", p=" + "{0:.2f}".format(float(pa)))
            
         
 #    at = autocorrelationTest(b, 0)
