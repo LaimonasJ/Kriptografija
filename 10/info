@@ -1,0 +1,42 @@
+A='abcdefghijklmnopqrstuvwxyz'
+def i_skaiciu(text):
+    t=''
+    for r in text:
+        if r in A:
+            ind=A.index(r)+1
+            if ind<10: t=t+'0'+str(ind)
+            else: t=t+str(ind)
+    return int(t,10)  
+
+def i_teksta(M):
+    n=M
+    text=''
+    while n>0:
+        ind=n%100
+        ind=ind-1
+        if (ind>=0) & (ind<len(A)):
+            text+=A[ind]
+            n=(n-ind+1)//100
+        else:
+            text+='?'
+            n=(n-ind+1)//100            
+    return text[::-1]     
+
+n = 1113493700349226906569211606069928554721062224952982803553393
+e = 645581752813
+d = 69551819503025651344190454953131110882158620148972760142441
+
+rsaMe = 129433992487764769470246984293317501831163988349146293552060
+
+m = power_mod(rsaMe, d, n)
+i_teksta(m)
+
+
+[n,e]=[1113493700349226906569211606069928554721062224952982803553393, 312450931927] find p,q -> pq =n -> f(n)=(p-1)(q-1)->dA=1/eA(mod f(n))
+
+1) N = e*d-1;   t = N/2/2.../ untill t is odd
+2) choose a0 = a^t(mod n)  <- jei a0 = 1, keiciam a
+   a = a0^2 (mod n) <- kol av-1 <> 1, o av = 1
+   x = gcd (av-1, n)
+   jei x = 1 or n, ieskom kitp a
+   else x = p   q = n/p
