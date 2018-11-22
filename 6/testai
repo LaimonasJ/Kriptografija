@@ -1,3 +1,4 @@
+
 #http://www.mif.vu.lt/katedros/matinf/asm/vs/pask/crypto_prot/crppr.htm
 
 #6 uzduotis
@@ -107,26 +108,23 @@ def runTests(intArray, p):
     
     
     print "Autokoreliacijos testas"
-#    atsitiktine = True
-#    for d in range (1, len(b) / 2):
-#        at = autocorrelationTest(b, 0)
-#        pa = getNormalDistribution(at)
-#        if pa < p:
-#            atsitiktine = False
-#            break            
-#    if not atsitiktine:
-#        print ("Seka nera atsitiktine su d = " + str(float(d)))
-#    else:
-#        print ("Seka atsitiktine")    
+    for d in range(5, 20, 5):
+        at = autocorrelationTest(b, d)
+        pa = getNormalDistribution(at)
+        if pa < p:
+            print ("Seka nera atsitiktine su d = " + str(float(d)) + ", T5 = " + str(float(at)) + ", p  = " + str(float(pa)))
+        else:
+            print ("Seka atsitiktine su d = " + str(float(d))  + ", T5 = " + str(float(at)) + ", p  = " + str(float(pa)))
+           
         
-    at = autocorrelationTest(b, 0)
-    pa = getNormalDistribution(at)
-    print ("T5 = " + str(float(at)))
-    print ("p  = " + str(float(pa)))
-    if pa < p:
-        print ("Seka nera atsitiktine")
-    else:
-        print ("Seka atsitiktine")
+#    at = autocorrelationTest(b, 0)
+#    pa = getNormalDistribution(at)
+#    print ("T5 = " + str(float(at)))
+#    print ("p  = " + str(float(pa)))
+#    if pa < p:
+#        print ("Seka nera atsitiktine")
+#    else:
+#        print ("Seka atsitiktine")
 
         
 # The system of linear feedback registers
