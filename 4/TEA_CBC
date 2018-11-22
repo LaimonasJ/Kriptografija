@@ -1,0 +1,47 @@
+#  -*- coding: utf-8 -*-
+data=[[156, 234], [94, 70], [133, 81], [170, 1], [22, 129], [244, 156], [135, 165], [228, 59], [171, 4], [64, 142]]
+key=[[97, 117, 100], [117, 100, 97], [100, 97, 117]]
+
+IV = [ord('e'), ord('n')]
+
+
+def rotate_right(l,n): #cyclic shifts
+    return l[-n:] + l[:-n]
+
+def rotate_left(l,n):
+    return l[n:] + l[:n]
+	
+getBin = lambda x, n: x >= 0 and str(bin(x))[2:].zfill(n) or "-"+ str(bin(x))[3:].zfill(n)
+
+#int(str(b),2) binary string b to number
+
+def iter (pora, raktas):
+	l = pora[0]
+	r = pora[1]
+	lbin = getBin(l, 8)
+	
+	l_shift_kairen = rotate_left(lbin, 2)
+	l_shift_desinen = rotate_right(lbin, 2)
+	
+	l1 = (l + raktas[0]) % 256
+	l2 = (int(str(l_shift_kairen),2) + raktas[1]) % 256
+	l3 = (int(str(l_shift_desinen),2) + raktas[2]) % 256
+	
+	lnaujas = l1^^l2^^l3
+	
+	lnaujas = (r - lnaujas) % 256
+	
+	r = l
+	l = lnaujas
+	return [l, r]
+
+ats = ''
+for i in range(0, len(data)):
+	result = iter(iter(iter(data[i], key[2]), key[1]), key[0])	
+	ats = ats + chr(result[1]^^IV[0]) + chr(result[0]^^IV[1])
+	IV = data[i]
+	# print(chr(result[1])) # binary string of given length
+	# print(chr(result[0])) # binary string of given length
+
+print (ats)
+	
