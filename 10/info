@@ -40,3 +40,14 @@ i_teksta(m)
    x = gcd (av-1, n)
    jei x = 1 or n, ieskom kitp a
    else x = p   q = n/p
+   
+   
+   
+Rabino 
+
+enc->    c=m^2(mod n)
+dec->    m^2=c(mod p)  m1 = c^((p+1)/4)(mod p)
+         m^2=c(mod q)  m2 = c^((q+1)/4)(mod q)
+         
+m= +-m1(uq)+-m2(vp)(mod n)
+u = q^(-1)(mod p); v = p^(-1)(mod q)
