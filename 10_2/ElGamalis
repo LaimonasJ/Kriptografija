@@ -1,0 +1,64 @@
+A='abcdefghijklmnopqrstuvwxyz'
+def i_skaiciu(text):
+    t=''
+    for r in text:
+        if r in A:
+            ind=A.index(r)+1
+            if ind<10: t=t+'0'+str(ind)
+            else: t=t+str(ind)
+    return int(t,10)  
+
+def i_teksta(M):
+    n=M
+    text=''
+    while n>0:
+        ind=n%100
+        ind=ind-1
+        if (ind>=0) & (ind<len(A)):
+            text+=A[ind]
+            n=(n-ind+1)//100
+        else:
+            text+='?'
+            n=(n-ind+1)//100            
+    return text[::-1]  
+
+
+p,alpha,beta=12016012609141909200527091927191118250205120747, 123, 8505520659946082962291051015697475836144958288
+
+tekstas_1 = 1609140907010927190121072119 #pinigai saugus   tai yra x
+gama1, delta1 = 2776683814862110036599905330361068844923622957, 5408278507144951988750461359928774634493392313
+
+tekstas_2 =1200509110920052709271601191101092001 #ateikite i paskaita
+gama2, delta2 = 2776683814862110036599905330361068844923622957, 5706571477717383396367023749805888504335025259
+
+C1, C2 = 10402308846650143232734346885888115121762543050, 2351433767281217239655652711328262829263172180
+
+#patikra
+print power_mod(beta, gama1, p)*power_mod(gama1, delta1, p)%p
+print power_mod(alpha, tekstas_1, p)
+
+
+#ieskom k
+d=gcd(delta1-delta2,p-1)
+print d
+
+#Daugiau nei 1
+k = (tekstas_1-tekstas_2)/(delta1-delta2)%(p-1)
+k0 = (tekstas_1-tekstas_2)/(delta1 - delta2)%((p-1)//d)
+print k, k0
+k = k0
+
+
+print power_mod(alpha, k, p)
+print gama2
+
+d2=gcd(gama1,p-1)
+print d2
+
+#d2 = 1, todel a=
+a= (tekstas_1-k*delta1)/gama1%(p-1)
+print a
+
+M = C2/power_mod(C1, a, p)%p
+
+print i_teksta(M)
