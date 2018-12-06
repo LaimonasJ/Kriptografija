@@ -1,0 +1,47 @@
+A='abcdefghijklmnopqrstuvwxyz0123456789'
+def hash(text,n):
+    t=''
+    for r in text:
+        if r in A:
+            ind=A.index(r)+1
+            if ind<10: t=t+'0'+str(ind)
+            else: t=t+str(ind)
+    return int(t,10)%n 
+   
+
+hash("bandymas",100000)
+
+m = 100000000001
+
+p = next_prime(16^15)
+q = factor(p-1)[-1][0]
+
+a = 999
+
+
+#alpha radimui
+g = primitive_root(p)
+alpha = power_mod(g, (p-1)//q, p)
+
+
+beta = power_mod(alpha, a, p)
+
+k = 222 #atsitiktinis
+
+gama = power_mod(alpha, k, p) % q
+delta = (m + a*gama)/k%q
+
+
+#Jei vienas - gerai
+#print gcd(delta, q)
+
+#salygos
+e1 = m/delta % q
+e2 = gama/delta % q
+
+print 'TESTAS'
+print power_mod(alpha, e1, p) * power_mod(beta, e2, p) %p %q
+print gama%q
+print 'REZULTATAI'
+print '[p, q, alpha, beta] = ' + str([p, q, alpha, beta])
+print 'm, sig(m) = ' + str(m) + ', ' + str([gama, delta]) 
