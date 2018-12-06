@@ -16,7 +16,7 @@ m = 100000000001
 p = next_prime(16^15)
 q = factor(p-1)[-1][0]
 
-a = 9^9
+a = 999
 
 
 #alpha radimui
@@ -26,24 +26,22 @@ alpha = power_mod(g, (p-1)//q, p)
 
 beta = power_mod(alpha, a, p)
 
-print 'm, p, q, a, alpha, beta'
-print m, p, q, a, alpha, beta
-
-k = 171 #atsitiktinis
+k = 222 #atsitiktinis
 
 gama = power_mod(alpha, k, p) % q
-print gama
 delta = (m + a*gama)/k%q
-print q
+
 
 #Jei vienas - gerai
-print gcd(delta, q)
+#print gcd(delta, q)
 
 #salygos
 e1 = m/delta % q
 e2 = gama/delta % q
 
-
-
-print power_mod(alpha, e1, p) * power_mod(beta, e2, p) % p
+print 'TESTAS'
+print power_mod(alpha, e1, p) * power_mod(beta, e2, p) %p %q
 print gama%q
+print 'REZULTATAI'
+print '[p, q, alpha, beta] = ' + str([p, q, alpha, beta])
+print 'm, sig(m) = ' + str(m) + ', ' + str([gama, delta]) 
