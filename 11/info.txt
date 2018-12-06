@@ -1,0 +1,13 @@
+m = 100000000001 #zinute
+
+atsakymas:
+DSA:
+  Kpub[p, q, alpha, beta]
+  m, sign(m) = [sigma, delta]
+     
+Gouillou-Quisquater:
+  Kpub = [n, e, I] #I bet koks
+  m, sign(m) = [s, e]
+  
+h(x,r) = h(x+r)
+    
